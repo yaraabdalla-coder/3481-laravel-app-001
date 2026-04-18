@@ -145,40 +145,40 @@ Route::prefix('shipping-companies')->group(function () {
 
 
 Route::prefix('customers')->Controller(CustomerController::class)->group(function(){
-    Route::git('name','name');
-     Route::git('number','number');
-      Route::git('addres','addres');
-       Route::git('email','email');
+    Route::get('name','name');
+     Route::get('number','number');
+      Route::get('addres','addres');
+       Route::get('email','email');
 
 });
 
 
-Route::prefix('supliers')->Controller(SupliersController::class)->group(function(){
-    Route::git('name','name');
-     Route::git('number','number');
-      Route::git('addres','addres');
-       Route::git('email','email');
+//Route::prefix('supliers')->Controller(SupliersController::class)->group(function(){
+    //Route::get('name','name');
+    // Route::get('number','number');
+     // Route::get('addres','addres');
+     //  Route::get('email','email');
 
-});
+//});
 
 
 
 Route::prefix('employyes')->Controller(EmployyesController::class)->group(function(){
-    Route::git('name','name');
-     Route::git('number','number');
-      Route::git('addres','addres');
-       Route::git('email','email');
+    Route::get('name','name');
+     Route::get('number','number');
+      Route::get('addres','addres');
+       Route::get♦('email','email');
 
 });
 
 
-Route::prefix('shipers')->Controller(ShiperController::class)->group(function(){
-    Route::git('name','name');
-     Route::git('number','number');
-      Route::git('addres','addres');
-       Route::git('email','email');
+//Route::prefix('shipers')->Controller(ShiperController::class)->group(function(){
+    //Route::get('name','name');
+    // Route::get('number','number');
+     // Route::get('addres','addres');
+     //  Route::get('email','email');
 
-});
+//});
 
 
 
