@@ -1,16 +1,80 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Task;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
-class TaskController extends Controller
+class TaskController
 {
-    public static function index(){
-     return ('all thinks');
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+       
+        $Tasks=Task::all();
+       return $Tasks;
     }
-    public static function show ($id){
-        Return ('task $id page');
+    
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        return  Task::create([
+           'title' =>request()->title,
+           'description'=>request()->description,
+           'status'=>request()->status??'pending',
+           'due_date'=>request()->due_date,
+            'user_id' => request()->user_id,
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+       $task = Task::findOrFail($id);
+
+     $task->delete();
+
+    return response()->json([
+        'message' => 'Task deleted successfully'
+    ]);
+
     }
 }
