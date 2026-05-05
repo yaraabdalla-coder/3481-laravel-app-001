@@ -1,7 +1,6 @@
 <?php
  
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use function Pest\Laravel\artisan;
@@ -9,62 +8,48 @@ use function Pest\Laravel\artisan;
 
 class InitController extends Controller
 {
-   private $models =[
-        'post_statuses',
-        'posts',
-        'comments',
-        'reblies',
-        'reaction_types',
-        'reactions',
+   private $Models =[
+        'Post_statuses',
+        'Posts',
+        'Comments',
+        'Reblies',
+        'Reaction_types',
+        'Reactions',
     
      ];
     public function migrations()
     {
-     $tables =[
-        'post_statuses',
-        'posts',
-        'comments',
-        'reblies',
-        'reaction_types',
-        'reactions',
     
-     ];
-    
-     foreach($tables as $table){
-       Artisan::call('make:migration' ,[
-        'name' =>'create_$table'
-       ]);
-       sleep(1);
+    foreach ($this->Models as $table) {
+      Artisan::call('make:migration', [
+        'name' => "create_$table"
+      ]);
+
+      sleep(1);
      } 
 
     }
     public function controllers (){
-     $classes =[
-        'post_statuses',
-        'posts',
-        'comments',
-        'reblies',
-        'reaction_types',
-        'reactions',
+     
     
-     ];
-    
-     foreach($classes as $class){
+     foreach($this->Models as $class){
        Artisan::call('make:controller' ,[
-        'name' =>'$class{controller}',
+        'name' =>$class.'controllers',
         '--api'=> true,
         '--no-interaction'=>true,
        ]);
        
      } 
     }
-      public function model(){
+      public function models()
+{
+    foreach ($this->Models as $model) {
+        Artisan::call('make:model', [
+            'name' => $model,
+            '-a' => true,
+        ]);
+    }
 
-    foreach($this->models as $model)
-       Artisan::call('make:model' ,[
-        'name' =>$model,
-        '-a'=>true
-       ]);
-       sleep(1);
-     }
+    return 'done';
+}
 }

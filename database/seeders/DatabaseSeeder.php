@@ -1,8 +1,11 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\User;
+use app\Models\Reactions;
+use App\Models\Posts;
+use App\Models\Poststatuses;
+USE App\Models\User;
+use App\Models\Reactiontypes;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,11 +18,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $this->call([
+             UserSeeder::class,
+            PostStatusesSeeder::class,
+           ReactionTypesSeeder::class,
+            PostsSeeder::class,
+            CommentsSeeder::class,
+            RebliesSeeder::class,
+            Taskseeder::class,
+             Reactions::class,
+                    ]);
+        
     }
 }

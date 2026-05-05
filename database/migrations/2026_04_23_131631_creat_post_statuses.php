@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-      Schema::create('post_statuses', function (Blueprint $table) {
+      Schema::create('poststatuses', function (Blueprint $table) {
             $table->id();
             $table->string('type',20);
             $table->timestamps();

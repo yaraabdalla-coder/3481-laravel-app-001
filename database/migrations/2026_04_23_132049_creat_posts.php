@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->text('title');
             $table->text('body');
-            $table->foreignIdFor(User::class)->CONSTRAINED();
-            $table->foreignId('post_status_id')->constrained();
+           $table->foreignId('user_id')->constrained();
+            $table->foreignId('poststatus_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
           

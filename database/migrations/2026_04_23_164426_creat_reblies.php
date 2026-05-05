@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reblies', function (Blueprint $table) {
             $table->id();
-            $table->string('replay','500');
+            $table->text('replay');
             $table->foreignId('comment_id')->constrained();
              $table->foreignId('user_id')->constrained();
             $table->timestamps();
