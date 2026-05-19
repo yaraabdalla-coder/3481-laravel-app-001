@@ -12,8 +12,8 @@ class TaskController
     public function index()
     {
        
-        $Tasks=Task::all();
-       return $Tasks;
+        $Task=Task::with('User','TaskComment')->get();
+       return $Task;
     }
     
 
